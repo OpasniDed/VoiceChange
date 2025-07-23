@@ -28,7 +28,6 @@ namespace VoiceChange
             return player;
         }
 
-        #region Private Static Memebers
         private static int MAX_FRAME_LENGTH = 16000;
         private float[] gInFIFO = new float[MAX_FRAME_LENGTH];
         private float[] gOutFIFO = new float[MAX_FRAME_LENGTH];
@@ -41,9 +40,7 @@ namespace VoiceChange
         private float[] gSynFreq = new float[MAX_FRAME_LENGTH];
         private float[] gSynMagn = new float[MAX_FRAME_LENGTH];
         private long gRover, gInit;
-        #endregion
 
-        #region Public Static  Methods
         public void PitchShift(float pitchShift, long numSampsToProcess,
            float sampleRate, float[] indata)
         {
@@ -182,9 +179,7 @@ namespace VoiceChange
                 }
             }
         }
-        #endregion
 
-        #region Private Static Methods
         public static void ShortTimeFourierTransform(float[] fftBuffer, long fftFrameSize, long sign)
         {
             float wr, wi, arg, temp;
@@ -237,6 +232,5 @@ namespace VoiceChange
                 }
             }
         }
-        #endregion
     }
 }

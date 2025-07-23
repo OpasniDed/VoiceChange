@@ -25,7 +25,7 @@ namespace VoiceChange
 
         public Dictionary<ReferenceHub, OpusComponent> Encoders = new();
         public List<Exiled.API.Features.Player> scpVoice = new();
-        public List<Exiled.API.Features.Player> scp999Player = new(); // Сюда закинуть игрока с ролью 999
+        public List<Exiled.API.Features.Player> scp999Player = new();
 
         public override void OnEnabled()
         {
@@ -88,31 +88,26 @@ namespace VoiceChange
         //    }
         //}
 
-        private void ApplyReverb(float[] pcmData)
-        {
-            float decay = 0.4f;
-            int delaySamples = 2000;
+        //private void ApplyReverb(float[] pcmData)
+        //{
+        //    float decay = 0.4f;
+        //    int delaySamples = 2000;
 
-            for (int i = 0; i < pcmData.Length - delaySamples; i++)
-            {
-                pcmData[i + delaySamples] += pcmData[i] * decay;
-            }
+        //    for (int i = 0; i < pcmData.Length - delaySamples; i++)
+        //    {
+        //        pcmData[i + delaySamples] += pcmData[i] * decay;
+        //    }
 
-            float max = Mathf.Max(pcmData.Max(), Mathf.Abs(pcmData.Min()));
-            if (max > 1f)
-            {
-                for (int i = 0; i < pcmData.Length; i++)
-                {
-                    pcmData[i] /= max;
-                }
-            }
-        }
+        //    float max = Mathf.Max(pcmData.Max(), Mathf.Abs(pcmData.Min()));
+        //    if (max > 1f)
+        //    {
+        //        for (int i = 0; i < pcmData.Length; i++)
+        //        {
+        //            pcmData[i] /= max;
+        //        }
+        //    }
+        //}
 
-        bool HasCustomRole(Player player, uint roleId)
-        {
-            // Проверяем конкретную роль по ID
-            return CustomRole.Get(roleId)?.Check(player) ?? false;
-        }
 
     }
 }
